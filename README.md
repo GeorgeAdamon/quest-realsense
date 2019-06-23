@@ -3,6 +3,9 @@ Integration of Intel RealSense depth cameras with the Oculus Quest standalone VR
 
 
 ## Foreword
+
+<br/>
+
 This project consolidates the knowledge gained while attempting to power & operate a RealSense D435i camera directly from an Oculus Quest VR headset. 
 
 At the time of this attempt, no prior work on this specific problem was available in the public realm, and the solution wouldn't be possible without the valuable contribution of members of the Intel development team.
@@ -16,6 +19,8 @@ _George Adamopoulos_
 
 _23 of June 2019_
 
+<br/>
+
 ## Introduction
 
 ## Step 1: Project Setup
@@ -24,4 +29,4 @@ _23 of June 2019_
 
 ## Step 3: Initializing the RsContext Java class from Unity
 
-## Step 4: Using Quest friendly shaders
+## Step 4: Using Quest-friendly shaders

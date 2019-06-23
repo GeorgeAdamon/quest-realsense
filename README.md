@@ -22,8 +22,25 @@ _23 of June 2019_
 <br/>
 
 ## Introduction
+Development environment:
+| required info | |
+|----------------------------|----------------|
+| Operating System & Version | Windows 10 1803 |
+| Language                   | C#              | 
+| Unity Version              | 2019.1.4f1      |
+| Graphics API               | OpenGLES3       |
+| Scripting API Version      | .NET 4.x        |
 
-## Step 1: Project Setup
+RealSense Depth Camera Information:
+| required info | |
+|----------------------------|----------------|
+| Camera Model               | D435i           |
+| Firmware Version           | 5.11.6.200 +    | 
+| SDK Version                | 2.22.0 +        | 
+
+
+
+## Step 1: Project Setup (Windows)
 ### Prerequisites
 This guide assumes that the necessary steps for setting-up the Unity development environment for the Oculus Quest have been completed, as described in the official Oculus Quest documentation: [[1]](https://developer.oculus.com/documentation/quest/latest/concepts/unity-build-android/) [[2]](https://developer.oculus.com/documentation/quest/latest/concepts/unity-mobileprep/)
 
@@ -32,6 +49,11 @@ The project should be able to produce a working Android .apk build, which runs o
 ### Scripting Backend : Mono
 Navigate to Unity's _Project Settings > Player > Other Settings_ and ensure that the Scripting Backend is set to **Mono**.
 According to [this](https://github.com/IntelRealSense/librealsense/issues/4155#issuecomment-499363798) reply the RealSense library does not support Unity's IL2CPP library, at least at the time of writing this.
+
+![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-scripting-backend.png)
+
+### Importing RealSense Unity wrappers
+This guide assumes that the latest Intel RealSense Unity wrappers [**package**](https://github.com/IntelRealSense/librealsense/releases/download/v2.20.0/realsense.unitypackage) can be imported succesfully in Unity without errors, and that one of the provided example projects can be run succesfully on a
 
 ## Step 2: Building the librealsense.aar Android library
 

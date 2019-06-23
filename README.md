@@ -73,12 +73,20 @@ According to [this](https://github.com/IntelRealSense/librealsense/issues/4155#i
 ![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-scripting-backend.png)
 
 ## Step 2: Building the librealsense.aar Android library
-In order to build a Unity project using RealSense cameras for a platform other than Windows, in this case Android, the appropriate wrappers for this platform need to be built as Native Plugins, and placed inside the 
+In order to build a Unity project using RealSense cameras for a platform other than Windows, in this case Android, the appropriate wrappers for this platform need to be built as Native Plugins, and placed inside the _**Assets / RealSenseSDK2.0 / Plugins**_ folder. In this case, we will have to build the librealsense.aar Plugin from the provided Java source code, based on the [official guidelines](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android). 
 
-```Assets / RealSenseSDK2.0 / Plugins``` folder. In thic case, we will have to build the librealsense.aar file based on the [official guidelines](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android). From my personal experience, building from the Windows Command Prompt as an Administrator, using the ```gradlew assembleRelease``` [command](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android#build-with-gradle) was the most straightforward way:
+In my experience, building from the Windows Command Prompt as an Administrator, using the ```gradlew assembleRelease``` [command](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android#build-with-gradle) proved to be the most straightforward way:
 
 ![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build.png)
 
+A succesful build process should take around 10 minutes on a decent machine, and look like this:
+![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build-02.png)
+![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build-03.png)
+
+If the build is succesful, the generated .aar file will be located in 
+```<librealsense_root_dir>/wrappers/android/librealsense/build/outputs/aar```
+
+This file should be placed inside your Unity project, in the _**Assets / RealSenseSDK2.0 / Plugins**_ directory, alongside the Intel.RealSense.dll and librealsense2.dll. A succesful setup should look like this:
 
 ## Step 3: Initializing the RsContext Java class from Unity
 

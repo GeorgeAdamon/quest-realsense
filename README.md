@@ -22,6 +22,9 @@ _23 of June 2019_
 <br/>
 
 ## Introduction
+
+The project was tested in the following environments.
+
 **Development environment:**
 
 | Label | Info  |

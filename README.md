@@ -22,21 +22,35 @@ _23 of June 2019_
 <br/>
 
 ## Introduction
-Development environment:
-| required info | |
-|----------------------------|----------------|
+**Development environment:**
+
+| Label | Info  |
+|----------------------------|-----------------|
 | Operating System & Version | Windows 10 1803 |
 | Language                   | C#              | 
 | Unity Version              | 2019.1.4f1      |
 | Graphics API               | OpenGLES3       |
 | Scripting API Version      | .NET 4.x        |
 
-RealSense Depth Camera Information:
-| required info | |
-|----------------------------|----------------|
+<br/>
+
+**RealSense Depth Camera Information:**
+
+| Label  |  Info  |
+|----------------------------|-----------------|
 | Camera Model               | D435i           |
 | Firmware Version           | 5.11.6.200 +    | 
 | SDK Version                | 2.22.0 +        | 
+
+<br/>
+
+**Oculus Quest Information:**
+
+| Label  |  Info  |
+|----------------------------|-----------------|
+| Headset Model              | Quest (May 2019)|
+| Headset Version            | 256550.6170.5 + | 
+| Unity Package Version      | 1.36 +          | 
 
 
 

@@ -86,7 +86,6 @@ In my experience, building from the Windows Command Prompt as an Administrator, 
 
 A succesful build process should take around 10 minutes on a decent machine, and look like this:
 ![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build-02.png)
-![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build-03.png)
 ![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build-04.png)
 
 If the build is succesful, the generated .aar file will be located in 

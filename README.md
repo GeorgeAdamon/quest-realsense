@@ -82,12 +82,14 @@ In my experience, building from the Windows Command Prompt as an Administrator, 
 A succesful build process should take around 10 minutes on a decent machine, and look like this:
 ![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build-02.png)
 ![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build-03.png)
+![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build-04.png)
 
 If the build is succesful, the generated .aar file will be located in 
 ```<librealsense_root_dir>/wrappers/android/librealsense/build/outputs/aar```
 
 This file should be placed inside your Unity project, in the _**Assets / RealSenseSDK2.0 / Plugins**_ directory, alongside the Intel.RealSense.dll and librealsense2.dll. A succesful setup should look like this:
 
+![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-unity-plugins.png)
 ## Step 3: Initializing the RsContext Java class from Unity
 
 ## Step 4: Using Quest-friendly shaders

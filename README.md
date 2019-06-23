@@ -76,9 +76,9 @@ According to [this](https://github.com/IntelRealSense/librealsense/issues/4155#i
 ### Build Process
 In general, in order to allow a Unity project to access the RealSense cameras when targeting a platform other than Windows, the appropriate wrappers for this platform need to be built as Native Plugins first.
 
-In this case, because we are targeting Android (the OS of Oculus Quest) we will have to build the librealsense.aar Plugin from the provided Android Java source code, based on the [official guidelines](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android). 
+In this case, because we are targeting Android (the OS of Oculus Quest) we will have to build the **librealsense.aar** plugin from the provided Android Java source code, based on the [official guidelines](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android). 
 
-In my experience, building from the Windows Command Prompt as an Administrator, using the ```gradlew assembleRelease``` [command](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android#build-with-gradle) proved to be the most straightforward, less error-prone way:
+In my experience, building from the Windows Command Prompt as an Administrator, using the ```gradlew assembleRelease``` [command](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android#build-with-gradle) proved to be the most straightforward, less error-prone, way:
 
 ![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build.png)
 
@@ -91,10 +91,43 @@ If the build is succesful, the generated .aar file will be located in
 ```<librealsense_root_dir>/wrappers/android/librealsense/build/outputs/aar```.
 
 ### Unity Side
-This file should be placed inside your Unity project, in the _**Assets / RealSenseSDK2.0 / Plugins**_ directory, alongside the Intel.RealSense.dll and librealsense2.dll. A succesful setup should look like this:
+The generated **librealsense.aar** file should be placed inside your Unity project, in the _**Assets / RealSenseSDK2.0 / Plugins**_ directory, alongside the Intel.RealSense.dll and librealsense2.dll. A succesful setup should look like this:
 
 ![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-unity-plugins.png)
 
 ## Step 3: Initializing the RsContext Java class from Unity
+> Note: A big shout-out to [**ogoshen**](https://github.com/ogoshen) for generously providing the solution of this next step!
+
+Now that all the libraries are in place, before actually being able to access the RealSense camera, we need a C# script that performs two crucial jobs: 
+* Initializes a new instance of the Java class [**RsContext**](https://github.com/IntelRealSense/librealsense/blob/master/wrappers/android/librealsense/src/main/java/com/intel/realsense/librealsense/RsContext.java)
+* Makes sure that Android Camera Permissions are explicitly requested from the user, if not provided already.
+
+Attaching the following script to any GameObject in your Scene, would ensure that those two operations are executed in the beginning of your application:
+```c#
+using UnityEngine;
+
+public class AndroidPermissions : MonoBehaviour
+{
+#if UNITY_ANDROID && !UNITY_EDITOR
+    void Awake()
+    {
+        if (!UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.Camera))
+        {
+            UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.Camera);
+
+        }
+
+        using (var javaUnityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+        using (var currentActivity = javaUnityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
+        using (var rsContext = new AndroidJavaClass("com.intel.realsense.librealsense.RsContext"))
+        {
+            Debug.Log(rsContext);
+            rsContext.CallStatic("init", currentActivity);
+        }
+    }
+#endif
+}
+```
+
 
 ## Step 4: Using Quest-friendly shaders

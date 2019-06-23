@@ -74,11 +74,11 @@ According to [this](https://github.com/IntelRealSense/librealsense/issues/4155#i
 
 ## Step 2: Building the librealsense.aar Android library
 ### Build Process
-In order to build a Unity project using RealSense cameras for a platform other than Windows, in this case Android, the appropriate wrappers for this platform need to be built as Native Plugins, and placed inside the _**Assets / RealSenseSDK2.0 / Plugins**_ folder.
+In general, in order to allow a Unity project to access the RealSense cameras when targeting a platform other than Windows, the appropriate wrappers for this platform need to be built as Native Plugins first.
 
-In this case, we will have to build the librealsense.aar Plugin from the provided Java source code, based on the [official guidelines](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android). 
+In this case, because we are targeting Android (the OS of Oculus Quest) we will have to build the librealsense.aar Plugin from the provided Android Java source code, based on the [official guidelines](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android). 
 
-In my experience, building from the Windows Command Prompt as an Administrator, using the ```gradlew assembleRelease``` [command](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android#build-with-gradle) proved to be the most straightforward way:
+In my experience, building from the Windows Command Prompt as an Administrator, using the ```gradlew assembleRelease``` [command](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android#build-with-gradle) proved to be the most straightforward, less error-prone way:
 
 ![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build.png)
 

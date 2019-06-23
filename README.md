@@ -12,7 +12,7 @@ At the time of this attempt (5th-12th of June 2019), no prior work on this speci
 
 The discussion which led to the solution, is available [here](https://github.com/IntelRealSense/librealsense/issues/4155), for future reference.
 
-Aim of this project is to describe the steps necessary to achieve the Quest-RealSense integration inside Unity 2019.x, as well as to provide simple and generic source code.
+Aim of this repository is to describe the steps necessary to achieve the Quest-RealSense integration inside Unity 2019.x, as well as provide a sample Unity project, showcasing the method.
 
 
 _George Adamopoulos_
@@ -61,10 +61,12 @@ The project was tested in the following environments.
 ### Prerequisites #1: Oculus VR
 This guide assumes that the necessary steps for setting-up the Unity development environment for the Oculus Quest have been completed, as described in the official Oculus Quest documentation: [[1]](https://developer.oculus.com/documentation/quest/latest/concepts/unity-build-android/) [[2]](https://developer.oculus.com/documentation/quest/latest/concepts/unity-mobileprep/)
 
-The project should be able to produce a working Android .apk build, which runs on the Quest without issues, before proceeding to the next steps.
+Before proceeding to the next steps, the project should be able to produce a working Android .apk build, which runs on the Quest without issues.
 
 ### Prerequisites #2: Intel RealSense wrappers
-This guide assumes that the latest Intel RealSense Unity wrappers [**package**](https://github.com/IntelRealSense/librealsense/releases/download/v2.20.0/realsense.unitypackage) can be imported succesfully in Unity without errors, and that one of the provided example projects can be run succesfully on a Windows PC, provided a RealSense camera is connected to an appropriate USB port. More information in the official [realsense repository](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/unity).
+This guide assumes that the latest Intel RealSense Unity wrappers [**package**](https://github.com/IntelRealSense/librealsense/releases/download/v2.20.0/realsense.unitypackage) are imported succesfully in Unity 2019.x without errors. 
+
+Before proceeding to the next steps, the project should be able to run one of Intel's provided example Scenes in Unity's Play Mode, provided a RealSense device is connected to an appropriate USB port of a Windows machine. More information in the official [realsense repository](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/unity).
 
 ### Scripting Backend : Mono
 Navigate to Unity's _**Project Settings > Player > Other Settings**_ and ensure that the Scripting Backend is set to **Mono**.
@@ -103,6 +105,7 @@ Now that all the libraries are in place, before actually being able to access th
 * Makes sure that Android Camera Permissions are explicitly requested from the user, if not provided already.
 
 Attaching the following script to any GameObject in your Scene, would ensure that those two operations are executed in the beginning of your application:
+
 ```c#
 using UnityEngine;
 
@@ -131,3 +134,4 @@ public class AndroidPermissions : MonoBehaviour
 
 
 ## Step 4: Using Quest-friendly shaders
+TODO: Avoid geometry shaders!

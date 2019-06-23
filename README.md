@@ -76,7 +76,7 @@ According to [this](https://github.com/IntelRealSense/librealsense/issues/4155#i
 
 ## Step 2: Building the librealsense.aar Android library
 ### Build Process
-In general, in order to allow a Unity project to access the RealSense cameras when targeting a platform other than Windows, the appropriate wrappers for this platform need to be built as Native Plugins first.
+In general, in order to allow a Unity project to access the RealSense cameras when targeting a platform other than Windows, the appropriate wrappers for this platform need to be built as Native Plugins first, and included in the Unity project.
 
 In this case, because we are targeting Android (the OS of Oculus Quest) we will have to build the **librealsense.aar** plugin from the provided Android Java source code, based on the [official guidelines](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android). 
 

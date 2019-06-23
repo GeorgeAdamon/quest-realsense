@@ -58,21 +58,27 @@ The project was tested in the following environments.
 
 
 ## Step 1: Project Setup (Windows)
-### Prerequisites
+### Prerequisites #1: Oculus VR
 This guide assumes that the necessary steps for setting-up the Unity development environment for the Oculus Quest have been completed, as described in the official Oculus Quest documentation: [[1]](https://developer.oculus.com/documentation/quest/latest/concepts/unity-build-android/) [[2]](https://developer.oculus.com/documentation/quest/latest/concepts/unity-mobileprep/)
 
 The project should be able to produce a working Android .apk build, which runs on the Quest without issues, before proceeding to the next steps.
 
+### Prerequisites #2: Intel RealSense wrappers
+This guide assumes that the latest Intel RealSense Unity wrappers [**package**](https://github.com/IntelRealSense/librealsense/releases/download/v2.20.0/realsense.unitypackage) can be imported succesfully in Unity without errors, and that one of the provided example projects can be run succesfully on a Windows PC, provided a RealSense camera is connected to an appropriate USB port. More information [here](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/unity)
+
 ### Scripting Backend : Mono
-Navigate to Unity's _Project Settings > Player > Other Settings_ and ensure that the Scripting Backend is set to **Mono**.
+Navigate to Unity's _**Project Settings > Player > Other Settings**_ and ensure that the Scripting Backend is set to **Mono**.
 According to [this](https://github.com/IntelRealSense/librealsense/issues/4155#issuecomment-499363798) reply the RealSense library does not support Unity's IL2CPP library, at least at the time of writing this.
 
 ![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-scripting-backend.png)
 
-### Importing RealSense Unity wrappers
-This guide assumes that the latest Intel RealSense Unity wrappers [**package**](https://github.com/IntelRealSense/librealsense/releases/download/v2.20.0/realsense.unitypackage) can be imported succesfully in Unity without errors, and that one of the provided example projects can be run succesfully on a
-
 ## Step 2: Building the librealsense.aar Android library
+In order to build a Unity project using RealSense cameras for a platform other than Windows, in this case Android, the appropriate wrappers for this platform need to be built as Native Plugins, and placed inside the 
+
+```Assets / RealSenseSDK2.0 / Plugins``` folder. In thic case, we will have to build the librealsense.aar file based on the [official guidelines](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android). From my personal experience, building from the Windows Command Prompt as an Administrator, using the ```gradlew assembleRelease``` [command](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/android#build-with-gradle) was the most straightforward way:
+
+![](https://github.com/GeorgeAdamon/quest-realsense/blob/master/resources/img-gradle-build.png)
+
 
 ## Step 3: Initializing the RsContext Java class from Unity
 

@@ -133,4 +133,10 @@ public class AndroidPermissions : MonoBehaviour
 
 
 ## Step 4: Using Quest-friendly shaders
-TODO: Avoid geometry shaders!
+As stated [in the original discussion](https://github.com/IntelRealSense/librealsense/issues/4155#issuecomment-522884739), if you are using any other XR mode apart from **Multi-Pass Stereo**, Geometry Shaders will not work on the Quest.
+
+This means that if you try to load an example Unity project, such as the [PointCloudDepthAndColor](https://github.com/IntelRealSense/librealsense/blob/master/wrappers/unity/Assets/RealSenseSDK2.0/Scenes/Samples/PointCloudDepthAndColor.unity) scene from the Unity [samples](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/unity/Assets/RealSenseSDK2.0/Scenes/Samples) was that the _PointCloudMat_ material assigned to the _PointCloudRenderer_ component was using by default the [Custom/PointCloudGeom](https://github.com/IntelRealSense/librealsense/blob/master/wrappers/unity/Assets/RealSenseSDK2.0/Shaders/PointCloudGeom.shader) shader, which is a geometry shader.
+
+you will get an `OPENGL NATIVE PLUG-IN ERROR: GL_INVALID_OPERATION: Operation illegal in current state` error.
+
+Switching the shader of this material to the simple [Custom/PointCloud](https://github.com/IntelRealSense/librealsense/blob/master/wrappers/unity/Assets/RealSenseSDK2.0/Shaders/PointCloud.shader) shader worked like a charm! 
